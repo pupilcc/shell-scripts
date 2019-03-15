@@ -35,3 +35,13 @@
 * 绑定公钥的 GitHub 用户名
 
 `wget https://github.com/pupilcc/shell-scripts/raw/master/vps-init.sh && bash vps-init.sh [是否修改密码] [主机名] [你的GitHub 用户名]`
+
+## install-rclone.sh
+
+### 作用
+
+安装 rclone 1.41 版本
+
+### 使用方法
+
+`wget https://github.com/pupilcc/shell-scripts/raw/master/install-rclone.sh && bash install-rclone.sh`
