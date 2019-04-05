@@ -6,7 +6,18 @@ Info="${Green_font_prefix}[信息]${Font_color_suffix}"
 Error="${Red_font_prefix}[错误]${Font_color_suffix}"
 Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 
-# 验证参数个数
+# 系统版本
+os_num=0
+
+
+# 修改密码
+is_password=$1
+# 主机名
+hostname=$2
+# GitHub 用户名
+gh_name=$3
+
+# 参数个数
 declare -i COUNT=0
 
 for i in "$@"
@@ -14,67 +25,142 @@ do
     let COUNT+=1
 done
 
-if [ $COUNT != 3 ]
-then
-    echo -e "${Error} 终止脚本运行，请输入正确参数个数。"
-    exit
-fi
+# 系统检测
+check_os()
+{
+    source /etc/os-release
+    case $ID in
+        debian|ubuntu)
+            os_num=1
+            ;;
+        centos)
+            os_num=2
+            ;;
+    esac
+}
+
+# 验证参数个数
+check_param_count(){
+    if [ $COUNT != 3 ]
+    then
+        echo -e "${Error} 终止脚本运行，请输入正确参数个数。"
+        exit
+    fi
+}
 
 # 是否修改密码
-if [ $1 -eq 1 ] || [ $1 -eq 0 ]
-then
-    # 修改密码
-    if [ $1 = 1 ]
+change_password(){
+    if [ $is_password -eq 1 ] || [ $is_password -eq 0 ]
     then
-        echo -e "${Info} 修改密码"
-        passwd
-    fi
+        # 修改密码
+        if [ $is_password = 1 ]
+        then
+            echo -e "${Info} 修改密码"
+            passwd
+        fi
 
-    # 不修改密码
-    if [ $1 = 0 ]
-    then
-        echo -e "${Info} 不修改密码"
+        # 不修改密码
+        if [ $is_password = 0 ]
+        then
+            echo -e "${Info} 不修改密码"
+        fi
+    else
+        echo -e "${Error} 请输入正确的参数值来决定是否修改密码"
+        exit
     fi
-else
-    echo -e "${Error} 请输入正确的参数值来决定是否修改密码"
-    exit
-fi
+}
 
 # 修改主机名
-echo -e "${Info} 修改主机名为 ${Green_font_prefix}${2}${Font_color_suffix}"
-echo $2 > /etc/hostname
+change_hostname(){
+    echo -e "${Info} 修改主机名为 ${Green_font_prefix}${hostname}${Font_color_suffix}"
+    echo $hostname > /etc/hostname
+}
 
 # 修改时区
-echo -e "${Info} 修改时区为 ${Green_font_prefix}上海${Font_color_suffix}"
-#Debian / Centos 6
-cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+change_timezone_debian(){
+    #Debian / Centos 6
+    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+}
 
-#Centos 7
-timedatectl set-timezone Asia/Shanghai
+change_timezone_centos(){
+    #Centos 7
+    timedatectl set-timezone Asia/Shanghai
+}
 
 # 设置时间同步
-echo -e "${Info} 设置时间同步"
-yum install -y ntpdate
-apt-get install -y ntpdate
-echo "*/5 * * * * root ntpdate asia.pool.ntp.org;hwclock -w" >> /etc/crontab
+timesync(){
+    echo -e "${Info} 设置时间同步"
+    echo "*/5 * * * * root ntpdate asia.pool.ntp.org;hwclock -w" >> /etc/crontab
+}
 
 # 更新软件
-echo -e "${Info} 更新软件"
-apt-get update -y || yum update -y
+update_soft_debian(){
+    apt-get -y update
+}
+update_soft_centos(){
+    yum -y update
+}
 
 # 安装常用软件包
-echo -e "${Info} 安装常用软件包"
-apt-get install -y wget git vim screen ca-certificates || yum install -y wget git vim screen ca-certificates
+install_soft_debian(){
+    apt-get install -y wget git vim screen ca-certificates ntpdate
+
+}
+install_soft_centos(){
+    yum install -y wget git vim screen ca-certificates ntpdate
+}
+    
 
 # 添加 ssh 密钥
-echo -e "${Info} 添加 GitHub 用户名为 ${Green_font_prefix}${3}${Font_color_suffix} 的公钥"
-apt-get install -y wget git vim screen || yum install -y wget git vim screen 
-wget https://raw.githubusercontent.com/KiritoMiao/SSHKEY_Installer/master/key.sh && bash key.sh $3
+add_sshkey(){
+    echo -e "${Info} 添加 GitHub 用户名为 ${Green_font_prefix}${gh_name}${Font_color_suffix} 的公钥"
+    wget https://raw.githubusercontent.com/KiritoMiao/SSHKEY_Installer/master/key.sh && bash key.sh $gh_name
+}
 
 # 一键安装部署 Fail2ban
-echo -e "${Info} 一键安装部署 Fail2ban"
-wget https://raw.githubusercontent.com/FunctionClub/Fail2ban/master/fail2ban.sh && bash fail2ban.sh
+install_fail2ban(){
+    echo -e "${Info} 一键安装部署 Fail2ban"
+    wget https://raw.githubusercontent.com/FunctionClub/Fail2ban/master/fail2ban.sh && bash fail2ban.sh
+}
 
 # 重启
-echo -e "${Info} VPS 重启中..."
-reboot
+system_reboot(){
+    echo -e "${Info} VPS 重启中..."
+    #reboot
+}
+
+main(){
+    check_os
+    check_param_count
+    change_password
+
+    if [ $os_num == 1 ]; then
+        echo -e "${Info} 更新软件"
+        update_soft_debian
+
+        echo -e "${Info} 安装常用软件包"
+        install_soft_debian
+
+        echo -e "${Info} 修改时区为 ${Green_font_prefix}上海${Font_color_suffix}"
+        change_timezone_debian
+    fi
+
+    if [ $os_num == 2 ]; then
+        echo -e "${Info} 更新软件"
+        update_soft_centos
+
+        echo -e "${Info} 安装常用软件包"
+        install_soft_centos
+
+        echo -e "${Info} 修改时区为 ${Green_font_prefix}上海${Font_color_suffix}"
+        change_timezone_centos
+    fi
+
+    change_hostname
+    timesync
+    add_sshkey
+    install_fail2ban
+    system_reboot
+}
+
+main
