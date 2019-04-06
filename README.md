@@ -40,8 +40,16 @@
 
 ### 作用
 
-安装 rclone 1.41 版本
+安装 rclone，默认安装最新版，也可指定版本。
 
 ### 使用方法
 
+安装最新版本：
+
 `wget https://github.com/pupilcc/shell-scripts/raw/master/install-rclone.sh && bash install-rclone.sh`
+
+安装指定版本：
+
+`wget https://github.com/pupilcc/shell-scripts/raw/master/install-rclone.sh && bash install-rclone.sh [版本号]`
+
+例如安装 `1.41` 版本：`wget https://github.com/pupilcc/shell-scripts/raw/master/install-rclone.sh && bash install-rclone.sh 1.41`
