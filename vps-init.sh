@@ -126,7 +126,7 @@ install_fail2ban(){
 # 重启
 system_reboot(){
     echo -e "${Info} VPS 重启中..."
-    #reboot
+    reboot
 }
 
 main(){
