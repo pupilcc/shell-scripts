@@ -2,6 +2,18 @@
 
 自己写的一些 Shell 脚本
 
+## 必读
+
+在下载脚本之前，务必先安装 `ca-certificates` 包，以避免出现证书错误。
+
+```bash
+# Debian / Ubuntu
+apt-get install -y ca-certificates
+
+# CentOS
+yum install -y ca-certificates
+```
+
 ## vps-init.sh
 
 * 作用：自动设置新 VPS 的一些常用操作
