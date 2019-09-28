@@ -59,7 +59,7 @@ install_soft(){
     echo "export JAVA_HOME=/usr/java/jdk1.8.0_171" >> /etc/profile
     echo "export CLASSPATH=\$JAVA_HOME/lib/tools.jar:\$JAVA_HOME/lib/dt.jar:\$JAVA_HOME/lib" >> /etc/profile
     echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> /etc/profile
-    . /etc/profile
+    source /etc/profile
 }
 
 main() {

@@ -70,4 +70,4 @@ yum install -y ca-certificates
 
 ### 使用方法
 
-`wget https://github.com/pupilcc/shell-scripts/raw/master/install-jdk.sh && bash install-jdk.sh`
+`wget https://github.com/pupilcc/shell-scripts/raw/master/install-jdk.sh && source install-jdk.sh`
