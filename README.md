@@ -65,8 +65,6 @@ yum install -y ca-certificates
 
 ## install-jdk.sh
 
-## install-rclone.sh
-
 * 作用：安装 jdk，默认安装 Oracle jdk-8u171
 * 适用系统： Ubuntu / Debian / Centos 7+
 
