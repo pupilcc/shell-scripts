@@ -62,3 +62,14 @@ yum install -y ca-certificates
 例如安装 `1.41` 版本：
 
 `wget https://github.com/pupilcc/shell-scripts/raw/master/install-rclone.sh && bash install-rclone.sh 1.41`
+
+## install-jdk.sh
+
+## install-rclone.sh
+
+* 作用：安装 jdk，默认安装 Oracle jdk-8u171
+* 适用系统： Ubuntu / Debian / Centos 7+
+
+### 使用方法
+
+`wget https://github.com/pupilcc/shell-scripts/raw/master/install-jdk.sh && bash install-jdk.sh`
