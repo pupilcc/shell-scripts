@@ -8,10 +8,10 @@
 
 ```bash
 # Debian / Ubuntu
-apt-get install -y ca-certificates
+apt-get install -y ca-certificates wget
 
 # CentOS
-yum install -y ca-certificates
+yum install -y ca-certificates wget
 ```
 
 ## vps-init.sh
