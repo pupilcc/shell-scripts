@@ -103,24 +103,22 @@ update_soft_centos(){
 
 # 安装常用软件包
 install_soft_debian(){
-    apt-get install -y wget git vim screen ca-certificates ntpdate
+    apt-get install -y wget git vim screen ca-certificates ntpdate acpid
 
 }
 install_soft_centos(){
-    yum install -y wget git vim screen ca-certificates ntpdate
+    yum install -y wget git vim screen ca-certificates ntpdate acpid
 }
     
+# 拉取远端 vimrc
+get_vimrc(){
+    wget -P ~ https://raw.githubusercontent.com/pupilcc/vimrc/master/.vimrc
+}
 
 # 添加 ssh 密钥
 add_sshkey(){
     echo -e "${Info} 添加 GitHub 用户名为 ${Green_font_prefix}${gh_name}${Font_color_suffix} 的公钥"
     wget https://raw.githubusercontent.com/KiritoMiao/SSHKEY_Installer/master/key.sh && bash key.sh $gh_name
-}
-
-# 一键安装部署 Fail2ban
-install_fail2ban(){
-    echo -e "${Info} 一键安装部署 Fail2ban"
-    wget https://raw.githubusercontent.com/FunctionClub/Fail2ban/master/fail2ban.sh && bash fail2ban.sh
 }
 
 # 重启
@@ -158,8 +156,8 @@ main(){
 
     change_hostname
     timesync
+    get_vimrc
     add_sshkey
-    install_fail2ban
     system_reboot
 }
 
