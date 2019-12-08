@@ -103,11 +103,11 @@ update_soft_centos(){
 
 # 安装常用软件包
 install_soft_debian(){
-    apt-get install -y wget git vim screen ca-certificates ntpdate
+    apt-get install -y wget git vim screen ca-certificates ntpdate acpid
 
 }
 install_soft_centos(){
-    yum install -y wget git vim screen ca-certificates ntpdate
+    yum install -y wget git vim screen ca-certificates ntpdate acpid
 }
     
 
