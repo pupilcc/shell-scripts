@@ -110,6 +110,10 @@ install_soft_centos(){
     yum install -y wget git vim screen ca-certificates ntpdate acpid
 }
     
+# 拉取远端 vimrc
+get_vimrc(){
+    wget -P ~ https://raw.githubusercontent.com/pupilcc/vimrc/master/.vimrc
+}
 
 # 添加 ssh 密钥
 add_sshkey(){
@@ -152,6 +156,7 @@ main(){
 
     change_hostname
     timesync
+    get_vimrc
     add_sshkey
     system_reboot
 }
