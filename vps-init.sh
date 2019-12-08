@@ -117,12 +117,6 @@ add_sshkey(){
     wget https://raw.githubusercontent.com/KiritoMiao/SSHKEY_Installer/master/key.sh && bash key.sh $gh_name
 }
 
-# 一键安装部署 Fail2ban
-install_fail2ban(){
-    echo -e "${Info} 一键安装部署 Fail2ban"
-    wget https://raw.githubusercontent.com/FunctionClub/Fail2ban/master/fail2ban.sh && bash fail2ban.sh
-}
-
 # 重启
 system_reboot(){
     echo -e "${Info} VPS 重启中..."
@@ -159,7 +153,6 @@ main(){
     change_hostname
     timesync
     add_sshkey
-    install_fail2ban
     system_reboot
 }
 

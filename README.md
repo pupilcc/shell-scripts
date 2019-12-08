@@ -28,7 +28,6 @@ yum install -y ca-certificates
 * 更新软件
 * 安装常用软件包
 * 自动配置 ssh 密钥 （使用的是 [KiritoMiao/SSHKEY_Installer](https://github.com/KiritoMiao/SSHKEY_Installer)）
-* 一键安装部署 Fail2ban （使用的是 [FunctionClub/Fail2ban](https://github.com/FunctionClub/Fail2ban/)）
 
 #### 自动配置 ssh 密钥
 
