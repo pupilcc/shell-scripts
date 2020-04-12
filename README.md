@@ -28,7 +28,7 @@ yum install -y ca-certificates wget
 * 更新软件
 * 安装常用软件包
 * 拉取远端 vimrc
-* 自动配置 ssh 密钥 （使用的是 [KiritoMiao/SSHKEY_Installer](https://github.com/KiritoMiao/SSHKEY_Installer)）
+* 自动配置 SSH 密钥 （使用的是 [P3TERX/SSH_Key_Installer](https://github.com/P3TERX/SSH_Key_Installer))
 
 #### 自动配置 ssh 密钥
 

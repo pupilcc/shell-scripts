@@ -16,6 +16,8 @@ is_password=$1
 hostname=$2
 # GitHub 用户名
 gh_name=$3
+# sshkey 文件
+authorized_keys=~/.ssh/authorized_keys
 
 # 参数个数
 declare -i COUNT=0
@@ -118,7 +120,15 @@ get_vimrc(){
 # 添加 ssh 密钥
 add_sshkey(){
     echo -e "${Info} 添加 GitHub 用户名为 ${Green_font_prefix}${gh_name}${Font_color_suffix} 的公钥"
-    wget https://raw.githubusercontent.com/KiritoMiao/SSHKEY_Installer/master/key.sh && bash key.sh $gh_name
+    bash <(curl -Ls git.io/ikey.sh) -g $gh_name
+
+    if [ -f "$authorized_keys"  ];  then
+        echo -e "${Info} 已存在 authorized_keys, 将会禁用密码登录"
+        bash <(curl -Ls git.io/ikey.sh) -d
+    else
+        echo -e "${Error} authorized_keys 不存在, 请重试导入公钥"
+    fi
+
 }
 
 # 重启
