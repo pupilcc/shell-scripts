@@ -8,6 +8,9 @@ Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 #系统版本
 os_num=0
 
+#Java安装目录
+java_home=/usr/local/java
+
 # 文件地址
 use_file() {
     file="https://dl.pupil.cc/software/jdk/jdk-8u171-linux-x64.tar.gz"
@@ -52,11 +55,11 @@ install_dependency(){
 # 安装
 install_soft(){
     echo -e "${Info} 正在安装 JDK"
-    mkdir /usr/java
+    mkdir ${java_home}
     wget $file
-    tar xzf jdk-8u171-linux-x64.tar.gz -C /usr/java
+    tar xzf jdk-8u171-linux-x64.tar.gz -C ${java_home}
     echo "#set java environment" >> /etc/profile
-    echo "export JAVA_HOME=/usr/java/jdk1.8.0_171" >> /etc/profile
+    echo "export JAVA_HOME=${java_home}/jdk1.8.0_171" >> /etc/profile
     echo "export CLASSPATH=\$JAVA_HOME/lib/tools.jar:\$JAVA_HOME/lib/dt.jar:\$JAVA_HOME/lib" >> /etc/profile
     echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> /etc/profile
     source /etc/profile
