@@ -71,3 +71,12 @@ yum install -y ca-certificates wget
 ### 使用方法
 
 `wget https://github.com/pupilcc/shell-scripts/raw/master/install-jdk.sh && source install-jdk.sh`
+
+## install-docker.sh
+
+* 作用：安装 docker 和 docker-compose
+* 适用系统： Ubuntu / Debian / Centos 7+
+
+### 使用方法
+
+`wget https://github.com/pupilcc/shell-scripts/raw/master/install-docker.sh && bash install-docker.sh`
