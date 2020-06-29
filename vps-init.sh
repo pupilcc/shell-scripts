@@ -111,7 +111,7 @@ install_soft_debian(){
 install_soft_centos(){
     yum install -y wget git vim screen ca-certificates ntpdate acpid cloud-init curl
 }
-    
+
 # 拉取远端 vimrc
 get_vimrc(){
     wget -P ~ https://raw.githubusercontent.com/pupilcc/vimrc/master/.vimrc
@@ -120,11 +120,11 @@ get_vimrc(){
 # 添加 ssh 密钥
 add_sshkey(){
     echo -e "${Info} 添加 GitHub 用户名为 ${Green_font_prefix}${gh_name}${Font_color_suffix} 的公钥"
-    bash <(curl -fsSL git.io/key.sh) -g $gh_name
+    bash <(curl -fsSL https://raw.githubusercontent.com/P3TERX/SSH-Key-Installer/master/key.sh) -g $gh_name
 
     if [ -f "$authorized_keys"  ];  then
         echo -e "${Info} 已存在 authorized_keys, 将会禁用密码登录"
-        bash <(curl -fsSL git.io/key.sh) -d
+        bash <(curl -fsSL https://raw.githubusercontent.com/P3TERX/SSH-Key-Installer/master/key.sh) -d
     else
         echo -e "${Error} authorized_keys 不存在, 请重试导入公钥"
     fi
