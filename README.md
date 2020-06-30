@@ -80,3 +80,12 @@ yum install -y ca-certificates wget
 ### 使用方法
 
 `wget https://github.com/pupilcc/shell-scripts/raw/master/install-docker.sh && bash install-docker.sh`
+
+## firewalld-to-iptables.sh
+
+* 作用：禁用 firewalld，然后启用 iptables
+* 适用系统： Centos 7+
+
+### 使用方法
+
+`wget https://github.com/pupilcc/shell-scripts/raw/master/firewalld-to-iptables.sh && bash firewalld-to-iptables.sh`
