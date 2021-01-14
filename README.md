@@ -89,3 +89,12 @@ yum install -y ca-certificates wget
 ### 使用方法
 
 `wget https://github.com/pupilcc/shell-scripts/raw/master/firewalld-to-iptables.sh && bash firewalld-to-iptables.sh`
+
+## cert.sh
+
+* 作用：根据输入的域名使用 [acme.sh](http://acme.sh/) 生成证书
+* 适用系统： Ubuntu / Debian / Centos 7+
+
+### 使用方法
+
+`wget https://github.com/pupilcc/shell-scripts/raw/master/cert.sh && bash cert.sh [domain]`
