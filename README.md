@@ -90,6 +90,15 @@ yum install -y ca-certificates wget
 
 `wget https://github.com/pupilcc/shell-scripts/raw/master/firewalld-to-iptables.sh && bash firewalld-to-iptables.sh`
 
+## debian10-use-iptables.sh
+
+* 作用：禁用 nftables，然后启用 iptables
+* 适用系统： Debian 10
+
+### 使用方法
+
+`wget https://github.com/pupilcc/shell-scripts/raw/master/debian10-use-iptables.sh && bash debian10-use-iptables.sh`
+
 ## cert.sh
 
 * 作用：根据输入的域名使用 [acme.sh](http://acme.sh/) 生成证书
