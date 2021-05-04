@@ -92,7 +92,7 @@ yum install -y ca-certificates wget
 
 ## debian10-use-iptables.sh
 
-* 作用：禁用 nftables，然后启用 iptables
+* 作用：切换到 iptables-legacy，以使用 iptables。
 * 适用系统： Debian 10
 
 ### 使用方法
