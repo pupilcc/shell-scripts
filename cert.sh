@@ -44,6 +44,9 @@ git clone https://github.com/Neilpang/acme.sh.git
 cd acme.sh
 ./acme.sh --install --home ~/.acme.sh
 
+# 设置默认 CA
+~/.acme.sh/acme.sh --set-default-ca  --server  letsencrypt
+
 # 生成证书
 echo -e "${Info} 证书路径：${certFolder}"
 mkdir ${certFolder}
