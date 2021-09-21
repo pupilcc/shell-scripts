@@ -10,20 +10,17 @@ Info="${Green_font_prefix}[信息]${Font_color_suffix}"
 Error="${Red_font_prefix}[错误]${Font_color_suffix}"
 Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 
+# DNS API
+export CF_Key=""
+export CF_Email=""
+dns="dns_cf"
+echo -e "${Info} 设置 DNS API 成功"
+
 # ZeroSSL Email
 account=""
 
 # 证书存放目录
 certFolder="/home/cert"
-
-# 设置 DNS API
-init_dns_api(){
-    # DNS API
-    export CF_Key=""
-    export CF_Email=""
-    dns="dns_cf"
-    echo -e "${Info} 设置 DNS API 成功"
-}
 
 # 安装 acme.sh
 install(){
@@ -71,7 +68,7 @@ echo -e "${Info} 2. 更新 acme.sh"
 echo -e "${Info} 3. 生成证书"
 
 start_manu(){
-	read -p " 请输入正确的数字: " mian
+	read -p "请输入正确的数字: " mian
 	case "$mian" in
 		0)
 		init_dns_api
