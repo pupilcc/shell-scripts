@@ -62,7 +62,6 @@ generate(){
 }
 
 #选项菜单	
-echo -e "${Info} 0. 设置 DNS API"
 echo -e "${Info} 1. 安装 acme.sh"
 echo -e "${Info} 2. 更新 acme.sh"
 echo -e "${Info} 3. 生成证书"
@@ -70,9 +69,6 @@ echo -e "${Info} 3. 生成证书"
 start_manu(){
 	read -p "请输入正确的数字: " mian
 	case "$mian" in
-		0)
-		init_dns_api
-		;;
 		1)
 		install
 		;;
