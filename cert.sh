@@ -21,6 +21,7 @@ init_dns_api(){
     # DNS API
     export CF_Key=""
     export CF_Email=""
+    dns="dns_cf"
     echo -e "${Info} 设置 DNS API 成功"
 }
 
@@ -59,7 +60,7 @@ generate(){
     echo -e "${Info} 证书路径：${certFolder}"
     cd ${certFolder}
     echo -e "${Info} 安装证书：${domain}"
-    ~/.acme.sh/acme.sh --issue -d ${domain} --dns dns_cf --standalone -k 2048 --force
+    ~/.acme.sh/acme.sh --issue -d ${domain} --dns ${dns} --standalone -k 2048 --force
     ~/.acme.sh/acme.sh --installcert -d ${domain} --fullchainpath ${certFolder}/${domain}.crt --keypath ${certFolder}/${domain}.key
 }
 
