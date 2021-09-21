@@ -15,7 +15,6 @@ Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 export CF_Key=""
 export CF_Email=""
 dns="dns_cf"
-echo -e "${Info} 设置 DNS API 成功"
 
 # ZeroSSL Email
 account=""
