@@ -11,6 +11,7 @@ Error="${Red_font_prefix}[错误]${Font_color_suffix}"
 Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 
 # DNS API
+# see: https://github.com/acmesh-official/acme.sh/wiki/dnsapi
 export CF_Key=""
 export CF_Email=""
 dns="dns_cf"
