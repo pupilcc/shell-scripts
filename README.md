@@ -110,5 +110,5 @@ yum install -y ca-certificates wget
 ### 使用方法
 
 * 下载脚本: `wget https://github.com/pupilcc/shell-scripts/raw/master/cert.sh`
-* 更新脚本中的 14 行、22 行、23 行内容
+* 更新脚本中的 14 行、22 行、23 行、24 行内容
 * `bash cert.sh`
