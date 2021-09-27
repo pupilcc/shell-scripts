@@ -22,6 +22,9 @@ account=""
 # 证书存放目录
 certFolder="/home/cert"
 
+# 安装证书路径
+mkdir ${certFolder}
+
 # 安装 acme.sh
 install(){
     # 安装依赖
@@ -37,9 +40,6 @@ install(){
 
     # 设置默认 CA
     ~/.acme.sh/acme.sh --set-default-ca --server zerossl
-    
-    # 安装证书路径
-    mkdir ${certFolder}
 }
 
 # 更新 acme.sh
