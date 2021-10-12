@@ -22,8 +22,12 @@ account=""
 # 证书存放目录
 certFolder="/opt/cert"
 
-# 安装证书路径
-mkdir ${certFolder}
+# 创建证书存放目录
+cert_folder(){
+    if [ ! -d ${certFolder} ]; then
+        mkdir ${certFolder}
+    fi
+}
 
 # 安装 acme.sh
 install(){
@@ -55,6 +59,7 @@ generate(){
     ~/.acme.sh/acme.sh --register-account -m ${account} --server zerossl
 
     echo -e "${Info} 证书路径：${certFolder}"
+    cert_folder
     cd ${certFolder}
     echo -e "${Info} 安装证书：${domain}"
     ~/.acme.sh/acme.sh --issue -d ${domain} --dns ${dns} --standalone -k 2048 --force
