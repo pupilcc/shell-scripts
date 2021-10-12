@@ -24,7 +24,7 @@ certFolder="/opt/cert"
 
 # 创建证书存放目录
 cert_folder(){
-    if [ ! -d ${certFolder} ]; then
+    if [ ! -d "${certFolder}" ]; then
         mkdir ${certFolder}
     fi
 }
