@@ -20,7 +20,7 @@ dns="dns_cf"
 account=""
 
 # 证书存放目录
-certFolder="/home/cert"
+certFolder="/opt/cert"
 
 # 安装证书路径
 mkdir ${certFolder}
