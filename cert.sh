@@ -40,7 +40,7 @@ install(){
     cd ~
     git clone https://github.com/acmesh-official/acme.sh.git
     cd acme.sh
-    ./acme.sh --install --home /opt/.acme.sh
+    ./acme.sh --install --home ~/.acme.sh
 
     # 设置默认 CA
     ~/.acme.sh/acme.sh --set-default-ca --server zerossl
