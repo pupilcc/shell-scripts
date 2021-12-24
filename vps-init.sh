@@ -114,17 +114,11 @@ install_soft_centos(){
 
 # 安装 speedtest
 install_speedtest_debian(){
-    apt-get install gnupg1 apt-transport-https dirmngr
-    export INSTALL_KEY=379CE192D401AB61
-    export DEB_DISTRO=$(lsb_release -sc)
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys $INSTALL_KEY
-    echo "deb https://ookla.bintray.com/debian ${DEB_DISTRO} main" | sudo tee  /etc/apt/sources.list.d/speedtest.list
-    apt-get update
+    curl -s https://install.speedtest.net/app/cli/install.deb.sh | bash
     apt-get install -y speedtest
 }
 install_speedtest_centos(){
-    wget https://bintray.com/ookla/rhel/rpm -O bintray-ookla-rhel.repo
-    mv bintray-ookla-rhel.repo /etc/yum.repos.d/
+    curl -s https://install.speedtest.net/app/cli/install.rpm.sh | bash
     yum install -y speedtest
 }
 

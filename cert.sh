@@ -10,47 +10,84 @@ Info="${Green_font_prefix}[信息]${Font_color_suffix}"
 Error="${Red_font_prefix}[错误]${Font_color_suffix}"
 Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 
-# 验证参数个数
-# 参数个数
-declare -i COUNT=0
+# DNS API
+# see: https://github.com/acmesh-official/acme.sh/wiki/dnsapi
+export CF_Key=""
+export CF_Email=""
+dns="dns_cf"
 
-for i in "$@"
-do
-    let COUNT+=1
-done
-
-check_param_count(){
-    if [ $COUNT != 1 ]
-    then
-        echo -e "${Error} 终止脚本运行，请输入域名。"
-        exit
-    fi
-}
-check_param_count
+# ZeroSSL Email
+account=""
 
 # 证书存放目录
-certFolder="/home/cert"
-# 域名
-domain=$1
+certFolder="/opt/cert"
 
-# 安装依赖
-apt install -y socat git
-yum install -y socat git
+# 创建证书存放目录
+cert_folder(){
+    if [ ! -d "${certFolder}" ]; then
+        mkdir ${certFolder}
+    fi
+}
 
 # 安装 acme.sh
-echo -e "${Info} 安装 acme.sh"
-cd ~
-git clone https://github.com/Neilpang/acme.sh.git
-cd acme.sh
-./acme.sh --install --home ~/.acme.sh
+install(){
+    # 安装依赖
+    apt install -y socat git
+    yum install -y socat git
 
-# 设置默认 CA
-~/.acme.sh/acme.sh --set-default-ca  --server  letsencrypt
+    # 安装 acme.sh
+    echo -e "${Info} 安装 acme.sh"
+    cd ~
+    git clone https://github.com/acmesh-official/acme.sh.git
+    cd acme.sh
+    ./acme.sh --install --home ~/.acme.sh
+
+    # 设置默认 CA
+    ~/.acme.sh/acme.sh --set-default-ca --server zerossl
+}
+
+# 更新 acme.sh
+update(){
+    ~/.acme.sh/acme.sh --upgrade
+}
 
 # 生成证书
-echo -e "${Info} 证书路径：${certFolder}"
-mkdir ${certFolder}
-cd ${certFolder}
-echo -e "${Info} 安装证书：${domain}"
-~/.acme.sh/acme.sh --issue -d ${domain} --standalone -k ec-256 --force
-~/.acme.sh/acme.sh --installcert -d ${domain} --fullchainpath ${certFolder}/${domain}.crt --keypath ${certFolder}/${domain}.key --ecc
+generate(){
+    read -p "请输入域名: " domain
+
+    # 设置 ZeroSSL 帐号
+    ~/.acme.sh/acme.sh --register-account -m ${account} --server zerossl
+
+    echo -e "${Info} 证书路径：${certFolder}"
+    cert_folder
+    cd ${certFolder}
+    echo -e "${Info} 安装证书：${domain}"
+    ~/.acme.sh/acme.sh --issue --dns ${dns} -d ${domain} --standalone -k 2048 --force --log
+    ~/.acme.sh/acme.sh --installcert -d ${domain} --fullchainpath ${certFolder}/"${domain}".crt --keypath ${certFolder}/"${domain}".key
+}
+
+#选项菜单	
+echo -e "${Info} 1. 安装 acme.sh"
+echo -e "${Info} 2. 更新 acme.sh"
+echo -e "${Info} 3. 生成证书"
+
+start_manu(){
+	read -p "请输入正确的数字: " mian
+	case "$mian" in
+		1)
+		install
+		;;
+		2)
+	    update	
+		;;
+		3)
+		generate
+		;;
+		*)
+		echo -e  "${yellow} 请输入正确数字！${font}"
+		;;
+	esac
+}
+
+#启动目录
+start_manu

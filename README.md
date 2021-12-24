@@ -101,9 +101,14 @@ yum install -y ca-certificates wget
 
 ## cert.sh
 
-* 作用：根据输入的域名使用 [acme.sh](http://acme.sh/) 生成证书
+* 作用：使用 [acme.sh](http://acme.sh/) 生成证书
+* 要点：
+  - 使用 ZeroSSL 作为默认 CA
+  - 使用 DNS API 来验证域名
 * 适用系统： Ubuntu / Debian / Centos 7+
 
 ### 使用方法
 
-`wget https://github.com/pupilcc/shell-scripts/raw/master/cert.sh && bash cert.sh [domain]`
+* 下载脚本: `wget https://github.com/pupilcc/shell-scripts/raw/master/cert.sh`
+* 更新脚本中的 13 至 20 行内容
+* `bash cert.sh`
