@@ -62,8 +62,8 @@ generate(){
     cert_folder
     cd ${certFolder}
     echo -e "${Info} 安装证书：${domain}"
-    ~/.acme.sh/acme.sh --issue -d ${domain} --dns ${dns} --standalone -k 2048 --force
-    ~/.acme.sh/acme.sh --installcert -d ${domain} --fullchainpath ${certFolder}/${domain}.crt --keypath ${certFolder}/${domain}.key
+    ~/.acme.sh/acme.sh --issue --dns ${dns} -d ${domain} --standalone -k 2048 --force --log
+    ~/.acme.sh/acme.sh --installcert -d ${domain} --fullchainpath ${certFolder}/"${domain}".crt --keypath ${certFolder}/"${domain}".key
 }
 
 #选项菜单	
