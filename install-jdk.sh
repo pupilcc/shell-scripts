@@ -13,7 +13,7 @@ java_home=/usr/local/java
 
 # 文件地址
 use_file() {
-    file="https://dl.pupil.cc/software/jdk/jdk-8u171-linux-x64.tar.gz"
+    file="https://corretto.aws/downloads/latest/amazon-corretto-8-x64-linux-jdk.tar.gz"
 }
 
 # 判定是否为root用户
@@ -57,7 +57,7 @@ install_soft(){
     echo -e "${Info} 正在安装 JDK"
     mkdir ${java_home}
     wget $file
-    tar xzf jdk-8u171-linux-x64.tar.gz -C ${java_home}
+    tar xzf amazon-corretto-8-x64-linux-jdk.tar.gz -C ${java_home}
     echo "#set java environment" >> /etc/profile
     echo "export JAVA_HOME=${java_home}/jdk8" >> /etc/profile
     echo "export CLASSPATH=\$JAVA_HOME/lib/tools.jar:\$JAVA_HOME/lib/dt.jar:\$JAVA_HOME/lib" >> /etc/profile
