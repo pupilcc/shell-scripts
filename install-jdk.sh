@@ -55,9 +55,9 @@ install_dependency(){
 # 安装
 install_soft(){
     echo -e "${Info} 正在安装 JDK"
-    mkdir ${java_home}
+    mkdir -p ${java_home}/jdk8
     wget $file
-    tar xzf amazon-corretto-8-x64-linux-jdk.tar.gz -C ${java_home}
+    tar -xzf amazon-corretto-8-x64-linux-jdk.tar.gz --strip-components 1 -C ${java_home}/jdk8
     echo "#set java environment" >> /etc/profile
     echo "export JAVA_HOME=${java_home}/jdk8" >> /etc/profile
     echo "export CLASSPATH=\$JAVA_HOME/lib/tools.jar:\$JAVA_HOME/lib/dt.jar:\$JAVA_HOME/lib" >> /etc/profile
