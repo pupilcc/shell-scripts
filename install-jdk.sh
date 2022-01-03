@@ -59,7 +59,7 @@ install_soft(){
     wget $file
     tar xzf jdk-8u171-linux-x64.tar.gz -C ${java_home}
     echo "#set java environment" >> /etc/profile
-    echo "export JAVA_HOME=${java_home}/jdk1.8.0_171" >> /etc/profile
+    echo "export JAVA_HOME=${java_home}/jdk8" >> /etc/profile
     echo "export CLASSPATH=\$JAVA_HOME/lib/tools.jar:\$JAVA_HOME/lib/dt.jar:\$JAVA_HOME/lib" >> /etc/profile
     echo "export PATH=\$JAVA_HOME/bin:\$PATH" >> /etc/profile
     source /etc/profile
