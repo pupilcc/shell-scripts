@@ -14,8 +14,8 @@ os_num=0
 is_password=$1
 # 主机名
 hostname=$2
-# GitHub 用户名
-gh_name=$3
+# ssh key pub url
+ssh_key_url=$3
 # sshkey 文件
 authorized_keys=~/.ssh/authorized_keys
 
@@ -127,10 +127,9 @@ get_vimrc(){
     wget -P ~ https://raw.githubusercontent.com/pupilcc/config/master/.vimrc
 }
 
-# 添加 ssh 密钥
+# 添加 ssh 公钥
 add_sshkey(){
-    echo -e "${Info} 添加 GitHub 用户名为 ${Green_font_prefix}${gh_name}${Font_color_suffix} 的公钥"
-    bash <(curl -fsSL https://raw.githubusercontent.com/P3TERX/SSH-Key-Installer/master/key.sh) -g $gh_name
+    bash <(curl -fsSL https://raw.githubusercontent.com/P3TERX/SSH-Key-Installer/master/key.sh) -u ssh_key_url
 
     if [ -f "$authorized_keys"  ];  then
         echo -e "${Info} 已存在 authorized_keys, 将会禁用密码登录"
