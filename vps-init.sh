@@ -18,6 +18,8 @@ hostname=$2
 ssh_key_url=$3
 # sshkey 文件
 authorized_keys=~/.ssh/authorized_keys
+# raw url
+raw=https://raw.githubusercontents.com
 
 # 参数个数
 declare -i COUNT=0
@@ -124,16 +126,16 @@ install_speedtest_centos(){
 
 # 拉取远端 vimrc
 get_vimrc(){
-    wget -P ~ https://raw.githubusercontent.com/pupilcc/config/master/.vimrc
+    wget -P ~ ${raw}/pupilcc/config/master/.vimrc
 }
 
 # 添加 ssh 公钥
 add_sshkey(){
-    bash <(curl -fsSL https://raw.githubusercontent.com/P3TERX/SSH-Key-Installer/master/key.sh) -u ssh_key_url
+    bash <(curl -fsSL ${raw}/P3TERX/SSH-Key-Installer/master/key.sh) -u ssh_key_url
 
     if [ -f "$authorized_keys"  ];  then
         echo -e "${Info} 已存在 authorized_keys, 将会禁用密码登录"
-        bash <(curl -fsSL https://raw.githubusercontent.com/P3TERX/SSH-Key-Installer/master/key.sh) -d
+        bash <(curl -fsSL ${raw}/P3TERX/SSH-Key-Installer/master/key.sh) -d
     else
         echo -e "${Error} authorized_keys 不存在, 请重试导入公钥"
     fi
