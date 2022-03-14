@@ -94,7 +94,10 @@ change_timezone_centos(){
 # 设置时间同步
 timesync(){
     echo -e "${Info} 设置时间同步"
-    echo "*/5 * * * * root ntpdate asia.pool.ntp.org;hwclock -w" >> /etc/crontab
+    yum -y install ntpdate
+    # 同步时间
+    ntpdate -u  pool.ntp.org
+    echo "*/20 * * * * /usr/sbin/ntpdate pool.ntp.org  > /dev/null 2>&1" >> /etc/crontab
 }
 
 # 更新软件
