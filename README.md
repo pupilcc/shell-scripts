@@ -40,7 +40,7 @@ yum install -y ca-certificates wget
 
 * 是否修改密码。值为 `1` 则是修改密码，`0` 则是不修改密码。
 * 主机名
-* 绑定公钥的 GitHub 用户名
+* 公钥 URL 地址。如果是 GitHub 用户的公钥，则地址是 `https://github.com/{username}.keys`
 
 `wget https://github.com/pupilcc/shell-scripts/raw/master/vps-init.sh && bash vps-init.sh [是否修改密码] [主机名] [你的GitHub 用户名]`
 
