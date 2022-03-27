@@ -134,15 +134,9 @@ get_vimrc(){
 
 # 添加 ssh 公钥
 add_sshkey(){
-    bash <(curl -fsSL ${raw}/P3TERX/SSH-Key-Installer/master/key.sh) -u ssh_key_url
-
-    if [ -f "$authorized_keys"  ];  then
-        echo -e "${Info} 已存在 authorized_keys, 将会禁用密码登录"
-        bash <(curl -fsSL ${raw}/P3TERX/SSH-Key-Installer/master/key.sh) -d
-    else
-        echo -e "${Error} authorized_keys 不存在, 请重试导入公钥"
-    fi
-
+    wget ${raw}/P3TERX/SSH-Key-Installer/master/key.sh 
+    chmod +x key.sh
+    bash key.sh -ou ssh_key_url
 }
 
 # 重启
