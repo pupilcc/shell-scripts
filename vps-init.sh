@@ -136,7 +136,7 @@ get_vimrc(){
 add_sshkey(){
     wget ${raw}/P3TERX/SSH-Key-Installer/master/key.sh 
     chmod +x key.sh
-    bash key.sh -ou ssh_key_url
+    bash key.sh -ou ${ssh_key_url}
 }
 
 # 重启
