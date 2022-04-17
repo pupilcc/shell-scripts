@@ -96,8 +96,8 @@ timesync(){
     echo -e "${Info} 设置时间同步"
     yum -y install ntpdate
     # 同步时间
-    ntpdate -u  pool.ntp.org
-    echo "*/20 * * * * /usr/sbin/ntpdate pool.ntp.org  > /dev/null 2>&1" >> /etc/crontab
+    ntpdate -u pool.ntp.org
+    echo "*/20 * * * * ntpdate -u pool.ntp.org > /dev/null 2>&1" >> /etc/crontab
 }
 
 # 更新软件
