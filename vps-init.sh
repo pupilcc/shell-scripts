@@ -129,7 +129,7 @@ install_speedtest_centos(){
 
 # 拉取远端 vimrc
 get_vimrc(){
-    wget -P ~ ${raw}/pupilcc/config/master/vim/.vimrc
+    wget -P ~ ${raw}/pupilcc/dotfiles/master/vim/.vimrc
 }
 
 # 添加 ssh 公钥
