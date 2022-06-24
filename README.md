@@ -99,6 +99,15 @@ yum install -y ca-certificates wget
 
 `wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/debian10-use-iptables.sh && bash debian10-use-iptables.sh`
 
+## debian11-use-iptables.sh
+
+* 作用：使用 iptables
+* 适用系统： Debian 11
+
+### 使用方法
+
+`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/debian11-use-iptables.sh && bash debian11-use-iptables.sh`
+
 ## cert.sh
 
 * 作用：使用 [acme.sh](http://acme.sh/) 生成证书
