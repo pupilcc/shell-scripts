@@ -118,13 +118,8 @@ install_soft_centos(){
 }
 
 # 安装 speedtest
-install_speedtest_debian(){
-    curl -s https://install.speedtest.net/app/cli/install.deb.sh | bash
-    apt-get install -y speedtest
-}
-install_speedtest_centos(){
-    curl -s https://install.speedtest.net/app/cli/install.rpm.sh | bash
-    yum install -y speedtest
+install_speedtest(){
+    curl -fsSL git.io/speedtest-cli.sh | bash
 }
 
 # 拉取远端 vimrc
@@ -156,7 +151,6 @@ main(){
 
         echo -e "${Info} 安装常用软件包"
         install_soft_debian
-        install_speedtest_debian
 
         echo -e "${Info} 修改时区为 ${Green_font_prefix}上海${Font_color_suffix}"
         change_timezone_debian
@@ -168,12 +162,12 @@ main(){
 
         echo -e "${Info} 安装常用软件包"
         install_soft_centos
-        install_speedtest_centos
 
         echo -e "${Info} 修改时区为 ${Green_font_prefix}上海${Font_color_suffix}"
         change_timezone_centos
     fi
 
+    install_speedtest
     change_hostname
     timesync
     get_vimrc
