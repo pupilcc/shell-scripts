@@ -19,7 +19,7 @@ yum install -y ca-certificates wget
 * 作用：自动设置新 VPS 的一些常用操作
 * 适用系统： Ubuntu / Debian / Centos 7+
 
-### 内容
+#### 内容
 
 * 修改密码
 * 修改主机名
@@ -34,7 +34,7 @@ yum install -y ca-certificates wget
 
 前往 [https://github.com/settings/keys](https://github.com/settings/keys) 绑定公钥，即可在 VPS 使用该公钥。
 
-### 使用方法
+#### 使用方法
 
 必须依次输入三个参数：
 
@@ -49,7 +49,7 @@ yum install -y ca-certificates wget
 * 作用：安装 rclone，默认安装最新版，也可指定版本。
 * 适用系统： Ubuntu / Debian / Centos 7+
 
-### 使用方法
+#### 使用方法
 
 安装最新版本：
 
@@ -70,7 +70,7 @@ wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-rcl
 * 作用：安装 jdk，默认安装 Oracle jdk-8u171
 * 适用系统： Ubuntu / Debian / Centos 7+
 
-### 使用方法
+#### 使用方法
 
 ```bash
 wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-jdk.sh && source install-jdk.sh
@@ -81,7 +81,7 @@ wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-jdk
 * 作用：安装 docker 和 docker-compose
 * 适用系统： Ubuntu / Debian / Centos 7+
 
-### 使用方法
+#### 使用方法
 
 ```bash
 wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-docker.sh && bash install-docker.sh
@@ -92,7 +92,7 @@ wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-doc
 * 作用：禁用 firewalld，然后启用 iptables
 * 适用系统： Centos 7+
 
-### 使用方法
+#### 使用方法
 
 ```bash
 wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/firewalld-to-iptables.sh && bash firewalld-to-iptables.sh
@@ -103,7 +103,7 @@ wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/firewalld-t
 * 作用：切换到 iptables-legacy，以使用 iptables。
 * 适用系统： Debian 10
 
-### 使用方法
+#### 使用方法
 
 ```bash
 wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/debian10-use-iptables.sh && bash debian10-use-iptables.sh
@@ -114,7 +114,7 @@ wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/debian10-us
 * 作用：使用 iptables
 * 适用系统： Debian 11
 
-### 使用方法
+#### 使用方法
 
 ```bash
 wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/debian11-use-iptables.sh && bash debian11-use-iptables.sh
@@ -128,7 +128,7 @@ wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/debian11-us
   - 使用 DNS API 来验证域名
 * 适用系统： Ubuntu / Debian / Centos 7+
 
-### 使用方法
+#### 使用方法
 
 * 下载脚本: 
 ```bash
