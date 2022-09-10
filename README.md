@@ -53,7 +53,9 @@ yum install -y ca-certificates wget
 
 安装最新版本：
 
-`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-rclone.sh && bash install-rclone.sh`
+```bash
+wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-rclone.sh && bash install-rclone.sh
+```
 
 安装指定版本：
 
@@ -70,7 +72,9 @@ yum install -y ca-certificates wget
 
 ### 使用方法
 
-`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-jdk.sh && source install-jdk.sh`
+```bash
+wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-jdk.sh && source install-jdk.sh
+```
 
 ## install-docker.sh
 
@@ -79,7 +83,9 @@ yum install -y ca-certificates wget
 
 ### 使用方法
 
-`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-docker.sh && bash install-docker.sh`
+```bash
+wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-docker.sh && bash install-docker.sh
+```
 
 ## firewalld-to-iptables.sh
 
@@ -88,7 +94,9 @@ yum install -y ca-certificates wget
 
 ### 使用方法
 
-`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/firewalld-to-iptables.sh && bash firewalld-to-iptables.sh`
+```bash
+wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/firewalld-to-iptables.sh && bash firewalld-to-iptables.sh
+```
 
 ## debian10-use-iptables.sh
 
@@ -97,7 +105,9 @@ yum install -y ca-certificates wget
 
 ### 使用方法
 
-`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/debian10-use-iptables.sh && bash debian10-use-iptables.sh`
+```bash
+wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/debian10-use-iptables.sh && bash debian10-use-iptables.sh
+```
 
 ## debian11-use-iptables.sh
 
@@ -106,7 +116,9 @@ yum install -y ca-certificates wget
 
 ### 使用方法
 
-`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/debian11-use-iptables.sh && bash debian11-use-iptables.sh`
+```bash
+wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/debian11-use-iptables.sh && bash debian11-use-iptables.sh
+```
 
 ## cert.sh
 
@@ -118,6 +130,9 @@ yum install -y ca-certificates wget
 
 ### 使用方法
 
-* 下载脚本: `wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/cert.sh`
+* 下载脚本: 
+```bash
+wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/cert.sh
+```
 * 更新脚本中的 13 至 20 行内容
 * `bash cert.sh`
