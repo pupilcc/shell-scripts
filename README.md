@@ -24,7 +24,7 @@ yum install -y ca-certificates wget
 * 修改密码
 * 修改主机名
 * 修改时区为中国上海
-* 定时时间同步
+* 使用 Chrony 同步时间
 * 更新软件
 * 安装常用软件包
 * 拉取远端 vimrc
