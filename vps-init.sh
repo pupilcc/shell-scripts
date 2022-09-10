@@ -14,10 +14,12 @@ os_num=0
 is_password=$1
 # 主机名
 hostname=$2
-# GitHub 用户名
-gh_name=$3
+# ssh key pub url
+ssh_key_url=$3
 # sshkey 文件
 authorized_keys=~/.ssh/authorized_keys
+# raw url
+raw=https://raw.githubusercontents.com
 
 # 参数个数
 declare -i COUNT=0
@@ -78,21 +80,22 @@ change_hostname(){
     echo $hostname > /etc/hostname
 }
 
-# 修改时区
-change_timezone_debian(){
-    #Debian / Centos 6
-    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+# 安装时间同步服务
+install_chrony_debian(){
+    apt -y install chrony
 }
-
-change_timezone_centos(){
-    #Centos 7
-    timedatectl set-timezone Asia/Shanghai
+install_chrony_centos(){
+    yum -y install chrony
 }
 
 # 设置时间同步
 timesync(){
-    echo -e "${Info} 设置时间同步"
-    echo "*/5 * * * * root ntpdate asia.pool.ntp.org;hwclock -w" >> /etc/crontab
+    systemctl status chronyd
+    systemctl enable chrony
+    # 设置时区
+    timedatectl set-timezone Asia/Shanghai
+    # 设置完时区后，在强制同步下系统时钟
+    chronyc -a makestep
 }
 
 # 更新软件
@@ -113,32 +116,20 @@ install_soft_centos(){
 }
 
 # 安装 speedtest
-install_speedtest_debian(){
-    curl -s https://install.speedtest.net/app/cli/install.deb.sh | bash
-    apt-get install -y speedtest
-}
-install_speedtest_centos(){
-    curl -s https://install.speedtest.net/app/cli/install.rpm.sh | bash
-    yum install -y speedtest
+install_speedtest(){
+    curl -fsSL git.io/speedtest-cli.sh | bash
 }
 
 # 拉取远端 vimrc
 get_vimrc(){
-    wget -P ~ https://raw.githubusercontent.com/pupilcc/config/master/.vimrc
+    wget -P ~ ${raw}/pupilcc/dotfiles/master/vim/.vimrc
 }
 
-# 添加 ssh 密钥
+# 添加 ssh 公钥
 add_sshkey(){
-    echo -e "${Info} 添加 GitHub 用户名为 ${Green_font_prefix}${gh_name}${Font_color_suffix} 的公钥"
-    bash <(curl -fsSL https://raw.githubusercontent.com/P3TERX/SSH-Key-Installer/master/key.sh) -g $gh_name
-
-    if [ -f "$authorized_keys"  ];  then
-        echo -e "${Info} 已存在 authorized_keys, 将会禁用密码登录"
-        bash <(curl -fsSL https://raw.githubusercontent.com/P3TERX/SSH-Key-Installer/master/key.sh) -d
-    else
-        echo -e "${Error} authorized_keys 不存在, 请重试导入公钥"
-    fi
-
+    wget ${raw}/P3TERX/SSH-Key-Installer/master/key.sh 
+    chmod +x key.sh
+    bash key.sh -ou ${ssh_key_url}
 }
 
 # 重启
@@ -158,10 +149,9 @@ main(){
 
         echo -e "${Info} 安装常用软件包"
         install_soft_debian
-        install_speedtest_debian
 
         echo -e "${Info} 修改时区为 ${Green_font_prefix}上海${Font_color_suffix}"
-        change_timezone_debian
+        install_chrony_debian
     fi
 
     if [ $os_num == 2 ]; then
@@ -170,14 +160,14 @@ main(){
 
         echo -e "${Info} 安装常用软件包"
         install_soft_centos
-        install_speedtest_centos
 
         echo -e "${Info} 修改时区为 ${Green_font_prefix}上海${Font_color_suffix}"
-        change_timezone_centos
+        install_chrony_centos
     fi
 
-    change_hostname
     timesync
+    install_speedtest
+    change_hostname
     get_vimrc
     add_sshkey
     system_reboot

@@ -24,7 +24,7 @@ yum install -y ca-certificates wget
 * 修改密码
 * 修改主机名
 * 修改时区为中国上海
-* 定时时间同步
+* 使用 Chrony 同步时间
 * 更新软件
 * 安装常用软件包
 * 拉取远端 vimrc
@@ -40,9 +40,9 @@ yum install -y ca-certificates wget
 
 * 是否修改密码。值为 `1` 则是修改密码，`0` 则是不修改密码。
 * 主机名
-* 绑定公钥的 GitHub 用户名
+* 公钥 URL 地址。如果是 GitHub 用户的公钥，则地址是 `https://github.com/{username}.keys`
 
-`wget https://github.com/pupilcc/shell-scripts/raw/master/vps-init.sh && bash vps-init.sh [是否修改密码] [主机名] [你的GitHub 用户名]`
+`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/vps-init.sh && bash vps-init.sh [是否修改密码] [主机名] [你的GitHub 用户名]`
 
 ## install-rclone.sh
 
@@ -53,15 +53,15 @@ yum install -y ca-certificates wget
 
 安装最新版本：
 
-`wget https://github.com/pupilcc/shell-scripts/raw/master/install-rclone.sh && bash install-rclone.sh`
+`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-rclone.sh && bash install-rclone.sh`
 
 安装指定版本：
 
-`wget https://github.com/pupilcc/shell-scripts/raw/master/install-rclone.sh && bash install-rclone.sh [版本号]`
+`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-rclone.sh && bash install-rclone.sh [版本号]`
 
 例如安装 `1.41` 版本：
 
-`wget https://github.com/pupilcc/shell-scripts/raw/master/install-rclone.sh && bash install-rclone.sh 1.41`
+`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-rclone.sh && bash install-rclone.sh 1.41`
 
 ## install-jdk.sh
 
@@ -70,7 +70,7 @@ yum install -y ca-certificates wget
 
 ### 使用方法
 
-`wget https://github.com/pupilcc/shell-scripts/raw/master/install-jdk.sh && source install-jdk.sh`
+`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-jdk.sh && source install-jdk.sh`
 
 ## install-docker.sh
 
@@ -79,7 +79,7 @@ yum install -y ca-certificates wget
 
 ### 使用方法
 
-`wget https://github.com/pupilcc/shell-scripts/raw/master/install-docker.sh && bash install-docker.sh`
+`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-docker.sh && bash install-docker.sh`
 
 ## firewalld-to-iptables.sh
 
@@ -88,7 +88,7 @@ yum install -y ca-certificates wget
 
 ### 使用方法
 
-`wget https://github.com/pupilcc/shell-scripts/raw/master/firewalld-to-iptables.sh && bash firewalld-to-iptables.sh`
+`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/firewalld-to-iptables.sh && bash firewalld-to-iptables.sh`
 
 ## debian10-use-iptables.sh
 
@@ -97,7 +97,16 @@ yum install -y ca-certificates wget
 
 ### 使用方法
 
-`wget https://github.com/pupilcc/shell-scripts/raw/master/debian10-use-iptables.sh && bash debian10-use-iptables.sh`
+`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/debian10-use-iptables.sh && bash debian10-use-iptables.sh`
+
+## debian11-use-iptables.sh
+
+* 作用：使用 iptables
+* 适用系统： Debian 11
+
+### 使用方法
+
+`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/debian11-use-iptables.sh && bash debian11-use-iptables.sh`
 
 ## cert.sh
 
@@ -109,6 +118,6 @@ yum install -y ca-certificates wget
 
 ### 使用方法
 
-* 下载脚本: `wget https://github.com/pupilcc/shell-scripts/raw/master/cert.sh`
+* 下载脚本: `wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/cert.sh`
 * 更新脚本中的 13 至 20 行内容
 * `bash cert.sh`
