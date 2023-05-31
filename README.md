@@ -122,10 +122,11 @@ wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/debian11-us
 
 ## cert.sh
 
-* 作用：使用 [acme.sh](http://acme.sh/) 生成证书
+* 作用：使用 [acme.sh](https://acme.sh) 生成证书
 * 要点：
-  - 使用 ZeroSSL 作为默认 CA
+  - 使用 [Let's Encrypt](https://letsencrypt.org) 作为默认 CA
   - 使用 DNS API 来验证域名
+  - 域名托管在 [CloudFlare](https://www.cloudflare.com)
 * 适用系统： Ubuntu / Debian / Centos 7+
 
 #### 使用方法
