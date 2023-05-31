@@ -16,47 +16,43 @@ export CF_Key=""
 export CF_Email=""
 dns="dns_cf"
 
-# ZeroSSL Email
+# Notify Email
 account=""
 
-# 证书存放目录
+# save cert folder
 certFolder="/opt/cert"
 
-# 创建证书存放目录
+# create cert folder
 cert_folder(){
     if [ ! -d "${certFolder}" ]; then
         mkdir ${certFolder}
     fi
 }
 
-# 安装 acme.sh
+# install acme.sh
 install(){
-    # 安装依赖
+    # install dependent
     apt install -y socat git
     yum install -y socat git
 
-    # 安装 acme.sh
     echo -e "${Info} 安装 acme.sh"
     cd ~
     git clone https://github.com/acmesh-official/acme.sh.git
     cd acme.sh
-    ./acme.sh --install --home ~/.acme.sh
+    ./acme.sh --install -m ${account} --home ~/.acme.sh
 
-    # 设置默认 CA
-    ~/.acme.sh/acme.sh --set-default-ca --server zerossl
+    # set default ca
+    ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt
 }
 
-# 更新 acme.sh
+# update acme.sh
 update(){
     ~/.acme.sh/acme.sh --upgrade
 }
 
-# 生成证书
+# generate cert
 generate(){
     read -p "请输入域名: " domain
-
-    # 设置 ZeroSSL 帐号
-    ~/.acme.sh/acme.sh --register-account -m ${account} --server zerossl
 
     echo -e "${Info} 证书路径：${certFolder}"
     cert_folder
@@ -66,7 +62,7 @@ generate(){
     ~/.acme.sh/acme.sh --installcert -d ${domain} --fullchainpath ${certFolder}/"${domain}".crt --keypath ${certFolder}/"${domain}".key
 }
 
-#选项菜单	
+# menu	
 echo -e "${Info} 1. 安装 acme.sh"
 echo -e "${Info} 2. 更新 acme.sh"
 echo -e "${Info} 3. 生成证书"
@@ -89,5 +85,5 @@ start_manu(){
 	esac
 }
 
-#启动目录
+# start
 start_manu
