@@ -12,8 +12,8 @@ Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 
 # DNS API
 # see: https://github.com/acmesh-official/acme.sh/wiki/dnsapi
-export CF_Key=""
 export CF_Email=""
+export CF_Key=""
 dns="dns_cf"
 
 # Notify Email
