@@ -19,7 +19,7 @@ ssh_key_url=$3
 # sshkey 文件
 authorized_keys=~/.ssh/authorized_keys
 # raw url
-raw=https://raw.githubusercontents.com
+raw=https://raw.githubusercontent.com
 
 # 参数个数
 declare -i COUNT=0
