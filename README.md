@@ -54,16 +54,20 @@ yum install -y ca-certificates wget
 安装最新版本：
 
 ```bash
-wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-rclone.sh && bash install-rclone.sh
+wget https://raw.githubusercontent.com/pupilcc/shell-scripts/master/install-rclone.sh && bash install-rclone.sh
 ```
 
 安装指定版本：
 
-`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-rclone.sh && bash install-rclone.sh [版本号]`
+```
+wget https://raw.githubusercontent.com/pupilcc/shell-scripts/master/install-rclone.sh && bash install-rclone.sh [版本号]
+```
 
 例如安装 `1.41` 版本：
 
-`wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-rclone.sh && bash install-rclone.sh 1.41`
+```
+wget https://raw.githubusercontent.com/pupilcc/shell-scripts/master/install-rclone.sh && bash install-rclone.sh 1.41
+```
 
 ## install-jdk.sh
 
@@ -73,7 +77,7 @@ wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-rcl
 #### 使用方法
 
 ```bash
-wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-jdk.sh && source install-jdk.sh
+wget https://raw.githubusercontent.com/pupilcc/shell-scripts/master/install-jdk.sh && source install-jdk.sh
 ```
 
 ## install-docker.sh
@@ -84,7 +88,7 @@ wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-jdk
 #### 使用方法
 
 ```bash
-wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-docker.sh && bash install-docker.sh
+wget https://raw.githubusercontent.com/pupilcc/shell-scripts/master/install-docker.sh && bash install-docker.sh
 ```
 
 ## firewalld-to-iptables.sh
@@ -95,7 +99,7 @@ wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/install-doc
 #### 使用方法
 
 ```bash
-wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/firewalld-to-iptables.sh && bash firewalld-to-iptables.sh
+wget https://raw.githubusercontent.com/pupilcc/shell-scripts/master/firewalld-to-iptables.sh && bash firewalld-to-iptables.sh
 ```
 
 ## debian10-use-iptables.sh
@@ -106,7 +110,7 @@ wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/firewalld-t
 #### 使用方法
 
 ```bash
-wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/debian10-use-iptables.sh && bash debian10-use-iptables.sh
+wget https://raw.githubusercontent.com/pupilcc/shell-scripts/master/debian10-use-iptables.sh && bash debian10-use-iptables.sh
 ```
 
 ## debian11-use-iptables.sh
@@ -117,7 +121,7 @@ wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/debian10-us
 #### 使用方法
 
 ```bash
-wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/debian11-use-iptables.sh && bash debian11-use-iptables.sh
+wget https://raw.githubusercontent.com/pupilcc/shell-scripts/master/debian11-use-iptables.sh && bash debian11-use-iptables.sh
 ```
 
 ## cert.sh
@@ -133,7 +137,7 @@ wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/debian11-us
 
 * 下载脚本: 
 ```bash
-wget https://raw.githubusercontents.com/pupilcc/shell-scripts/master/cert.sh
+wget https://raw.githubusercontent.com/pupilcc/shell-scripts/master/cert.sh
 ```
 * 更新脚本中的 13 至 20 行内容
 * `bash cert.sh`
