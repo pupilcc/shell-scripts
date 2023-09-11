@@ -25,9 +25,9 @@ echo -e "${Info} 开始安装 docker-compose"
 china=$(curl -s https://262235.xyz/ip/$(curl -s https://262235.xyz/ip/) | grep 中国)
 if [[ ! -z "${china}" ]]; then
         echo $china
-        curl -L "https://ghproxy.com/https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        curl -L "https://ghproxy.com/https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 else
-        curl -L "https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        curl -L "https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 fi
 
 chmod +x /usr/local/bin/docker-compose
