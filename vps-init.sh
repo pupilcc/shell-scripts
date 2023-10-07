@@ -121,11 +121,13 @@ install_speedtest(){
 
 # 拉取远端 vimrc
 get_vimrc(){
+    echo -e "${Info} 配置 VIM 环境"
     wget -P ~ ${raw}/pupilcc/dotfiles@master/vim/.vimrc
 }
 
 # 添加 ssh 公钥
 add_sshkey(){
+    echo -e "${Info} 添加 SSH 公钥"
     wget ${raw}/P3TERX/SSH-Key-Installer@master/key.sh
     chmod +x key.sh
     bash key.sh -ou ${ssh_key_url}
