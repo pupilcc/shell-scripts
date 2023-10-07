@@ -7,7 +7,7 @@ Tip="${Green_font_prefix}[注意]${Font_color_suffix}"
 
 # docker
 echo -e "${Info} 开始安装 docker"
-china=$(curl -s https://262235.xyz/ip/$(curl -s https://262235.xyz/ip/) | grep 中国)
+china=$(curl -s ipinfo.io/json | grep CN)
 if [[ ! -z "${china}" ]]; then
         echo $china
         # 中国使用阿里云镜像
@@ -22,7 +22,6 @@ systemctl enable docker
 
 # docker-compose
 echo -e "${Info} 开始安装 docker-compose"
-china=$(curl -s https://262235.xyz/ip/$(curl -s https://262235.xyz/ip/) | grep 中国)
 if [[ ! -z "${china}" ]]; then
         echo $china
         curl -L "https://ghproxy.com/https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
