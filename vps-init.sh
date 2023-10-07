@@ -19,7 +19,7 @@ ssh_key_url=$3
 # sshkey 文件
 authorized_keys=~/.ssh/authorized_keys
 # raw url
-raw=https://raw.githubusercontent.com
+raw=https://fastly.jsdelivr.net/gh
 
 # 参数个数
 declare -i COUNT=0
@@ -90,7 +90,6 @@ install_chrony_centos(){
 
 # 设置时间同步
 timesync(){
-    systemctl status chronyd
     systemctl enable chrony
     # 设置时区
     timedatectl set-timezone Asia/Shanghai
@@ -122,12 +121,12 @@ install_speedtest(){
 
 # 拉取远端 vimrc
 get_vimrc(){
-    wget -P ~ ${raw}/pupilcc/dotfiles/master/vim/.vimrc
+    wget -P ~ ${raw}/pupilcc/dotfiles@master/vim/.vimrc
 }
 
 # 添加 ssh 公钥
 add_sshkey(){
-    wget ${raw}/P3TERX/SSH-Key-Installer/master/key.sh 
+    wget ${raw}/P3TERX/SSH-Key-Installer@master/key.sh
     chmod +x key.sh
     bash key.sh -ou ${ssh_key_url}
 }
