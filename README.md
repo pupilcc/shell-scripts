@@ -43,7 +43,7 @@ yum install -y ca-certificates wget
 * 公钥 URL 地址。如果是 GitHub 用户的公钥，则地址是 `https://github.com/{username}.keys`
 
 ```bash
-wget https://fastly.jsdelivr.net/gh/pupilcc/shell-scripts@master/vps-init.sh && bash vps-init.sh [是否修改密码] [主机名] [你的GitHub 用户名]
+wget https://fastly.jsdelivr.net/gh/pupilcc/shell-scripts@master/vps-init.sh && bash vps-init.sh [是否修改密码] [主机名] [公钥 URL 地址]
 ```
 
 ## install-rclone.sh
