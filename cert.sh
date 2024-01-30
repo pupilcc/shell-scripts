@@ -17,7 +17,7 @@ export CF_Key=""
 dns="dns_cf"
 
 # Notify Email
-account=""
+accountemail=""
 
 # save cert folder
 certFolder="/opt/cert"
@@ -39,7 +39,7 @@ install(){
     cd ~
     git clone https://github.com/acmesh-official/acme.sh.git
     cd acme.sh
-    ./acme.sh --install -m ${account} --home ~/.acme.sh
+    ./acme.sh --install --home ~/.acme.sh --accountemail ${accountemail} 
 
     # set default ca
     ~/.acme.sh/acme.sh --set-default-ca --server letsencrypt
@@ -58,7 +58,7 @@ generate(){
     cert_folder
     cd ${certFolder}
     echo -e "${Info} 安装证书：${domain}"
-    ~/.acme.sh/acme.sh --issue --dns ${dns} -d ${domain} --standalone -k 2048 --force --log
+    ~/.acme.sh/acme.sh --issue --dns ${dns} -d ${domain} --standalone -k 2048 --log
     ~/.acme.sh/acme.sh --installcert -d ${domain} --fullchainpath ${certFolder}/"${domain}".crt --keypath ${certFolder}/"${domain}".key
 }
 
