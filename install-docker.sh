@@ -24,9 +24,9 @@ systemctl enable docker
 echo -e "${Info} 开始安装 docker-compose"
 if [[ ! -z "${china}" ]]; then
         echo $china
-        curl -L "https://ghproxy.com/https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        curl -L "https://ghproxy.1888866.xyz/https://github.com/docker/compose/releases/download/v2.34.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 else
-        curl -L "https://github.com/docker/compose/releases/download/v2.21.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+        curl -L "https://github.com/docker/compose/releases/download/v2.34.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 fi
 
 chmod +x /usr/local/bin/docker-compose

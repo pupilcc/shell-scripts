@@ -107,11 +107,11 @@ update_soft_centos(){
 
 # 安装常用软件包
 install_soft_debian(){
-    apt-get install -y wget git vim screen ca-certificates ntpdate acpid cloud-init curl
+    apt-get install -y wget git vim ca-certificates ntpdate acpid cloud-init curl
 
 }
 install_soft_centos(){
-    yum install -y wget git vim screen ca-certificates ntpdate acpid cloud-init curl
+    yum install -y wget git vim ca-certificates ntpdate acpid cloud-init curl
 }
 
 # 安装 speedtest
