@@ -29,20 +29,6 @@ do
     let COUNT+=1
 done
 
-# 系统检测
-check_os()
-{
-    source /etc/os-release
-    case $ID in
-        debian|ubuntu)
-            os_num=1
-            ;;
-        centos)
-            os_num=2
-            ;;
-    esac
-}
-
 # 验证参数个数
 check_param_count(){
     if [ $COUNT != 3 ]
@@ -84,9 +70,6 @@ change_hostname(){
 install_chrony_debian(){
     apt -y install chrony
 }
-install_chrony_centos(){
-    yum -y install chrony
-}
 
 # 设置时间同步
 timesync(){
@@ -101,17 +84,11 @@ timesync(){
 update_soft_debian(){
     apt-get -y update
 }
-update_soft_centos(){
-    yum -y update
-}
 
 # 安装常用软件包
 install_soft_debian(){
     apt-get install -y wget git vim ca-certificates ntpdate acpid cloud-init curl
 
-}
-install_soft_centos(){
-    yum install -y wget git vim ca-certificates ntpdate acpid cloud-init curl
 }
 
 # 安装 speedtest
@@ -122,13 +99,13 @@ install_speedtest(){
 # 拉取远端 vimrc
 get_vimrc(){
     echo -e "${Info} 配置 VIM 环境"
-    wget -P ~ ${raw}/pupilcc/dotfiles@master/vim/.vimrc
+    wget -P ~ https://oss.stako.org/browser/shell/.vimrc
 }
 
 # 添加 ssh 公钥
 add_sshkey(){
     echo -e "${Info} 添加 SSH 公钥"
-    wget ${raw}/P3TERX/SSH-Key-Installer@master/key.sh
+    wget https://oss.stako.org/browser/shell/key.sh
     chmod +x key.sh
     bash key.sh -ou ${ssh_key_url}
 }
@@ -144,27 +121,14 @@ main(){
     check_param_count
     change_password
 
-    if [ $os_num == 1 ]; then
-        echo -e "${Info} 更新软件"
-        update_soft_debian
+    echo -e "${Info} 更新软件"
+    update_soft_debian
 
-        echo -e "${Info} 安装常用软件包"
-        install_soft_debian
+    echo -e "${Info} 安装常用软件包"
+    install_soft_debian
 
-        echo -e "${Info} 修改时区为 ${Green_font_prefix}上海${Font_color_suffix}"
-        install_chrony_debian
-    fi
-
-    if [ $os_num == 2 ]; then
-        echo -e "${Info} 更新软件"
-        update_soft_centos
-
-        echo -e "${Info} 安装常用软件包"
-        install_soft_centos
-
-        echo -e "${Info} 修改时区为 ${Green_font_prefix}上海${Font_color_suffix}"
-        install_chrony_centos
-    fi
+    echo -e "${Info} 修改时区为 ${Green_font_prefix}上海${Font_color_suffix}"
+    install_chrony_debian
 
     timesync
     install_speedtest
