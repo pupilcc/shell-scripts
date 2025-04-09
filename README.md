@@ -17,7 +17,7 @@ yum install -y ca-certificates wget
 ## vps-init.sh
 
 * 作用：自动设置新 VPS 的一些常用操作
-* 适用系统： Ubuntu / Debian / Centos 7+
+* 适用系统： Debian
 
 #### 内容
 
