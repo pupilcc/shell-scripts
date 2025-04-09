@@ -99,13 +99,13 @@ install_speedtest(){
 # 拉取远端 vimrc
 get_vimrc(){
     echo -e "${Info} 配置 VIM 环境"
-    wget -P ~ https://oss.stako.org/browser/shell/.vimrc
+    wget -P ~ https://oss.stako.org/shell/.vimrc
 }
 
 # 添加 ssh 公钥
 add_sshkey(){
     echo -e "${Info} 添加 SSH 公钥"
-    wget https://oss.stako.org/browser/shell/key.sh
+    wget https://oss.stako.org/shell/key.sh
     chmod +x key.sh
     bash key.sh -ou ${ssh_key_url}
 }
